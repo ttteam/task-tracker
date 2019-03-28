@@ -19,7 +19,7 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @GetMapping(value = "")
     public ResponseEntity<Role> getRoleById(@PathVariable(name = "id") Long id) {
 
         Optional<Role> role = roleService.getRoleById(id);
@@ -31,17 +31,17 @@ public class RoleController {
         }
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public Iterable<Role> getAllRoles() {
         return roleService.getAllRoles();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Role saveRole(@RequestBody Role account) {
         return roleService.saveRole(account);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteRole(@PathVariable(name = "id") Long id) {
         roleService.deleteRole(id);
         return ResponseEntity.noContent().build();

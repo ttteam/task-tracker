@@ -20,29 +20,22 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> getUserById(@PathVariable(name = "id") Long id) {
-
-        Optional<User> user = userService.getUserById(id);
-
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping(value = "/{id}")
+    public User getUserById(@PathVariable(name = "id") Long id) {
+        return userService.getUserById(id);
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public Iterable<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public User saveUser(@RequestBody User account) {
         return userService.saveUser(account);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteUser(@PathVariable(name = "id") Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
