@@ -30,8 +30,8 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping
-    public User saveUser(@RequestBody User account) {
+    @PostMapping(value = "/signup")
+    public User registerUser(@RequestBody User account) {
         return userService.saveUser(account);
     }
 
@@ -40,4 +40,6 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
+
+
 }
