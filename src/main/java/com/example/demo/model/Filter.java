@@ -27,15 +27,5 @@ public class Filter {
     )
     private Set<ParameterValue> parametervalues = new HashSet<>();
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "filter_dashboard",
-            joinColumns = @JoinColumn(name = "filterid"),
-            inverseJoinColumns = @JoinColumn(name = "dashboardid")
-    )
-    private Set<Dashboard> dashboards = new HashSet<>();
-
     public Filter(){}
 }
