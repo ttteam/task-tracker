@@ -1,10 +1,10 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Role;
+import com.example.demo.model.Parameter;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleRepository extends CrudRepository<Role, Long>{
-    Role findRoleById(Long id);
+public interface ParameterRepository extends CrudRepository<Parameter, Long> {
+    Parameter findParameterById(Long id);
 }

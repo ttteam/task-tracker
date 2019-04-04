@@ -1,12 +1,18 @@
 package com.example.demo.model;
 
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "role", schema = "new_schema")
 //@Table(name = "role")
+@Getter
+@Setter
 public class Role {
 
     public Role(Long id, String name) {
@@ -19,11 +25,8 @@ public class Role {
 
     @Id
     private Long id;
+    @Column(name = "role_name")
     private String name;
-
-    public Long getId() {
-        return id;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -45,17 +48,5 @@ public class Role {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
