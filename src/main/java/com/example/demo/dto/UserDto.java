@@ -14,8 +14,5 @@ public class UserDto {
     @NonNull
     private String username;
     @NonNull
-    private String firstPassword;
-    @NonNull
-    private String secondPassword;
-
+    private String password;
 }
