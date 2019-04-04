@@ -10,7 +10,6 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "role", schema = "new_schema")
-//@Table(name = "role")
 @Getter
 @Setter
 public class Role {

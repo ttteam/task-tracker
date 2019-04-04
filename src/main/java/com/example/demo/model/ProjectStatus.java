@@ -14,22 +14,17 @@ import java.util.Set;
 @Setter
 public class ProjectStatus {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String psName;
-
-//    @OneToMany(mappedBy = "projectstatus")
-//    private Set<ProjectDto> project = new HashSet<>();
 
     public ProjectStatus(){
 
     }
 
     public ProjectStatus(Long id, String psName) {
-//    public ProjectStatus(Long id, String psName, Set<ProjectDto> project) {
         this.id = id;
         this.psName = psName;
-//        this.project = project;
     }
 
     @Override
@@ -38,14 +33,11 @@ public class ProjectStatus {
         if (object == null || getClass() != object.getClass()) return false;
         ProjectStatus that = (ProjectStatus) object;
         return Objects.equals(id, that.id) &&
-                Objects.equals(psName, that.psName)
-//                && Objects.equals(project, that.project)
-                ;
+                Objects.equals(psName, that.psName);
     }
 
     @Override
     public int hashCode() {
-//        return Objects.hash(id, psName, project);
         return Objects.hash(id, psName);
     }
 }
