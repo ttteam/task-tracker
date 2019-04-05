@@ -21,7 +21,7 @@ public class User {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private String id;
-    private String username;
+    private String login;
     private String password;
 
     @ManyToMany(cascade = {
@@ -41,8 +41,8 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, Set<Role> roles, Profile profile) {
-        this.username = username;
+    public User(String login, String password, Set<Role> roles, Profile profile) {
+        this.login = login;
         this.password = password;
         this.roles = roles;
         this.profile = profile;
@@ -52,7 +52,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
                 '}';
@@ -64,12 +64,12 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id.equals(user.id) &&
-                username.equals(user.username) &&
+                login.equals(user.login) &&
                 password.equals(user.password) &&
                 roles.equals(user.roles);    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, roles);
+        return Objects.hash(id, login, password, roles);
     }
 }
