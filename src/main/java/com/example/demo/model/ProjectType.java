@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,9 +15,13 @@ import java.util.Set;
 @Setter
 public class ProjectType {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nameOfPT;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    private String id;
+    private String ptName;
 
     @OneToMany(mappedBy = "projecttype")
     private Set<Project> project = new HashSet<>();
@@ -25,9 +30,8 @@ public class ProjectType {
 
     }
 
-    public ProjectType(Long id, String nameOfPT, Set<Project> project) {
-        this.id = id;
-        this.nameOfPT = nameOfPT;
+    public ProjectType(String ptName, Set<Project> project) {
+        this.ptName = ptName;
         this.project = project;
     }
 
@@ -37,12 +41,12 @@ public class ProjectType {
         if (object == null || getClass() != object.getClass()) return false;
         ProjectType that = (ProjectType) object;
         return Objects.equals(id, that.id) &&
-                Objects.equals(nameOfPT, that.nameOfPT) &&
+                Objects.equals(ptName, that.ptName) &&
                 Objects.equals(project, that.project);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nameOfPT, project);
+        return Objects.hash(id, ptName, project);
     }
 }

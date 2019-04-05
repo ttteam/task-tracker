@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,18 +11,18 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "new_schema")
-//@Table(name = "user")
 @Getter
 @Setter
 public class User {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-//    private String username;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    private String id;
     private String username;
     private String password;
-
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
@@ -40,11 +41,11 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String username, String password, Set<Role> roles) {
-        this.id = id;
+    public User(String username, String password, Set<Role> roles, Profile profile) {
         this.username = username;
         this.password = password;
         this.roles = roles;
+        this.profile = profile;
     }
 
     @Override

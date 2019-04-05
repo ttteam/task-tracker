@@ -4,6 +4,7 @@ import com.sun.xml.internal.bind.v2.TODO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -17,8 +18,12 @@ import java.util.Set;
 @Setter
 public class Profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    private String id;
     private String firstName;
     private String secondName;
     private String email;
@@ -31,7 +36,6 @@ public class Profile {
     @JoinColumn(name = "userid", referencedColumnName = "id")
     private User user;
 
-    //TODO: посмотреть связь с какой таблицей
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE

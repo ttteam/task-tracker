@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -14,8 +15,12 @@ import java.util.Set;
 @Setter
 public class Issue {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    private String id;
     private String issueName;
     private String issueDescription;
     private Date startDate;
