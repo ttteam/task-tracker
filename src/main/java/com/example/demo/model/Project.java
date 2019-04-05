@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Table(name = "project", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Project {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -47,9 +49,6 @@ public class Project {
             inverseJoinColumns = @JoinColumn(name = "dashboardid")
     )
     private Set<Dashboard> dashboards = new HashSet<>();
-
-    public Project(){
-    }
 
     public Project(String projectName, String projectDescription, ProjectType projectType, ProjectStatus projectStatus) {
         this.projectName = projectName;

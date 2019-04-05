@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "parameter", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Parameter {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -20,5 +22,7 @@ public class Parameter {
     private String id;
     private String parameterName;
 
-    public Parameter(){}
+    public Parameter(String parameterName) {
+        this.parameterName = parameterName;
+    }
 }

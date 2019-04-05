@@ -1,9 +1,8 @@
 package com.example.demo.model;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -16,6 +15,7 @@ import java.util.Set;
 @Table(name = "profile", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Profile {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -55,9 +55,6 @@ public class Profile {
             inverseJoinColumns = @JoinColumn(name = "filterid")
     )
     private Set<Filter> filters = new HashSet<>();
-
-    public Profile() {
-    }
 
     public Profile(String firstName, String secondName, String email, Date birthday, User user) {
         this.firstName = firstName;

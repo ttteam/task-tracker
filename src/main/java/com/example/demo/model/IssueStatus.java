@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Table(name = "issuestatus", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class IssueStatus {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -20,6 +22,7 @@ public class IssueStatus {
     private String id;
     private String issueStatusName;
 
-    public IssueStatus(){}
-
+    public IssueStatus(String issueStatusName) {
+        this.issueStatusName = issueStatusName;
+    }
 }

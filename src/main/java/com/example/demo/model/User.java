@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Table(name = "user", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -37,9 +39,6 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private Profile profile;
-
-    public User() {
-    }
 
     public User(String login, String password, Set<Role> roles, Profile profile) {
         this.login = login;

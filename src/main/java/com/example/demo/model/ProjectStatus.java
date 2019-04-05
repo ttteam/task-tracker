@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Table(name = "projectstatus", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class ProjectStatus {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -22,10 +24,6 @@ public class ProjectStatus {
     )
     private String id;
     private String psName;
-
-    public ProjectStatus(){
-
-    }
 
     public ProjectStatus(String psName) {
         this.psName = psName;

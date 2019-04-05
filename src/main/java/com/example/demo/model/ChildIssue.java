@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -11,6 +13,7 @@ import java.sql.Date;
 @Table(name = "childissue", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class ChildIssue {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -30,10 +33,6 @@ public class ChildIssue {
     })
     @JoinColumn(name = "childIssueStatus", referencedColumnName = "id")
     private IssueStatus issueStatus;
-
-    public ChildIssue(){
-
-    }
 
     public ChildIssue(String childIssueName, String childIssueDescription, Date childIssueStartDate, Date childIssueDueDate, IssueStatus issueStatus) {
         this.childIssueName = childIssueName;

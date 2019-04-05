@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
@@ -13,6 +14,7 @@ import java.util.Objects;
 @Table(name = "role", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Role {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -23,9 +25,6 @@ public class Role {
     private String id;
     @Column(name = "role_name")
     private String roleName;
-
-    public Role() {
-    }
 
     public Role(String roleName) {
         this.roleName = roleName;

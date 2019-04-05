@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,6 +14,7 @@ import java.util.Set;
 @Table(name = "projecttype", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class ProjectType {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -25,10 +27,6 @@ public class ProjectType {
 
     @OneToMany(mappedBy = "projecttype")
     private Set<Project> project = new HashSet<>();
-
-    public ProjectType(){
-
-    }
 
     public ProjectType(String ptName, Set<Project> project) {
         this.ptName = ptName;

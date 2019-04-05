@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -11,6 +13,7 @@ import java.sql.Date;
 @Table(name = "comment", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Comment {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -27,8 +30,6 @@ public class Comment {
     })
     @JoinColumn(name = "profileId", referencedColumnName = "id")
     private Profile profile;
-
-    public Comment(){  }
 
     public Comment(String commentText, Date time, Profile profile) {
         this.commentText = commentText;

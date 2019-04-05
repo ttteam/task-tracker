@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 @Table(name = "filter", schema = "new_schema")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Filter {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -32,5 +34,8 @@ public class Filter {
     )
     private Set<ParameterValue> parametervalues = new HashSet<>();
 
-    public Filter(){}
+    public Filter(String filterName, Set<ParameterValue> parametervalues) {
+        this.filterName = filterName;
+        this.parametervalues = parametervalues;
+    }
 }
