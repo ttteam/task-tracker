@@ -1,7 +1,9 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.lang.NonNull;
 
@@ -12,6 +14,8 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectDto {
     @Null
     private String id;

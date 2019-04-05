@@ -1,7 +1,9 @@
 package com.example.demo.dto;
 
 import com.example.demo.model.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,6 +15,8 @@ import java.util.Set;
 
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class IssueDto {
     @Null
     private String id;
