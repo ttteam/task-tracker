@@ -6,6 +6,8 @@ import com.example.demo.service.ParameterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ParameterServiceImpl implements ParameterService {
 
@@ -27,8 +29,8 @@ public class ParameterServiceImpl implements ParameterService {
     }
 
     @Override
-    public Iterable<Parameter> getAllParameters() {
-        return repository.findAll();
+    public List<Parameter> getAllParameters() {
+        return (List<Parameter>) repository.findAll();
     }
 
     @Override

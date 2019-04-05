@@ -6,6 +6,8 @@ import com.example.demo.service.ProjectTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectTypeServiceImpl implements ProjectTypeService {
 
@@ -27,8 +29,8 @@ public class ProjectTypeServiceImpl implements ProjectTypeService {
     }
 
     @Override
-    public Iterable<ProjectType> getAllProjectTypes() {
-        return repository.findAll();
+    public List<ProjectType> getAllProjectTypes() {
+        return (List<ProjectType>) repository.findAll();
     }
 
     @Override

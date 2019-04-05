@@ -6,6 +6,8 @@ import com.example.demo.service.IssueRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class IssueRoleServiceImpl implements IssueRoleService {
 
@@ -27,8 +29,8 @@ public class IssueRoleServiceImpl implements IssueRoleService {
     }
 
     @Override
-    public Iterable<IssueRole> getAllIssueRoles() {
-        return repository.findAll();
+    public List<IssueRole> getAllIssueRoles() {
+        return (List<IssueRole>) repository.findAll();
     }
 
     @Override

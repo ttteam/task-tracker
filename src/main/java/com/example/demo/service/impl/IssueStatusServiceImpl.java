@@ -6,6 +6,8 @@ import com.example.demo.service.IssueStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class IssueStatusServiceImpl implements IssueStatusService {
 
@@ -27,8 +29,8 @@ public class IssueStatusServiceImpl implements IssueStatusService {
     }
 
     @Override
-    public Iterable<IssueStatus> getAllIssueStatuses() {
-        return repository.findAll();
+    public List<IssueStatus> getAllIssueStatuses() {
+        return (List<IssueStatus>) repository.findAll();
     }
 
     @Override

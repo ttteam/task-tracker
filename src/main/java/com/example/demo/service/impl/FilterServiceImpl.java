@@ -6,6 +6,8 @@ import com.example.demo.service.FilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FilterServiceImpl implements FilterService {
     private FilterRepository repository;
@@ -26,8 +28,8 @@ public class FilterServiceImpl implements FilterService {
     }
 
     @Override
-    public Iterable<Filter> getAllFilters() {
-        return repository.findAll();
+    public List<Filter> getAllFilters() {
+        return (List<Filter>) repository.findAll();
     }
 
     @Override

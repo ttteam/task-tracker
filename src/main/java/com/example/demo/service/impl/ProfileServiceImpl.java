@@ -6,6 +6,8 @@ import com.example.demo.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProfileServiceImpl implements ProfileService {
 
@@ -27,8 +29,8 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public Iterable<Profile> getAllProfiles() {
-        return repository.findAll();
+    public List<Profile> getAllProfiles() {
+        return (List<Profile>) repository.findAll();
     }
 
     @Override

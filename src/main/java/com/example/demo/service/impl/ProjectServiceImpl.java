@@ -6,6 +6,8 @@ import com.example.demo.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
@@ -27,8 +29,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Iterable<Project> getAllProjects() {
-        return repository.findAll();
+    public List<Project> getAllProjects() {
+        return (List<Project>)repository.findAll();
     }
 
     @Override

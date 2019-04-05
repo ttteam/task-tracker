@@ -6,6 +6,8 @@ import com.example.demo.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DashboardServiceImpl implements DashboardService {
 
@@ -27,8 +29,8 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public Iterable<Dashboard> getAllDashboards() {
-        return repository.findAll();
+    public List<Dashboard> getAllDashboards() {
+        return (List<Dashboard>) repository.findAll();
     }
 
     @Override

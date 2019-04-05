@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Bean
@@ -27,7 +29,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
-        User temp = repository.findByUsername(user.getLogin());
+        User temp = repository.findByLogin(user.getLogin());
         if (user.getId() != null || temp == null) {
             String newPass = bcryptEncoder.encode(user.getPassword());
             user.setPassword(newPass);
@@ -37,13 +39,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User updateUser(User user) {
+        return repository.save(user);
+    }
+
+    @Override
     public User getUserById(String id) {
         return repository.findUserById(id);
     }
 
     @Override
-    public Iterable<User> getAllUsers() {
-        return repository.findAll();
+//    public Iterable<User> getAllUsers() {
+    public List<User> getAllUsers() {
+        return (List<User>)repository.findAll();
     }
 
 

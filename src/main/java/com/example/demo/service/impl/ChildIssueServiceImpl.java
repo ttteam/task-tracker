@@ -6,6 +6,8 @@ import com.example.demo.service.ChildIssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ChildIssueServiceImpl implements ChildIssueService {
 
@@ -27,8 +29,8 @@ public class ChildIssueServiceImpl implements ChildIssueService {
     }
 
     @Override
-    public Iterable<ChildIssue> getAllChildIssues() {
-        return repository.findAll();
+    public List<ChildIssue> getAllChildIssues() {
+        return (List<ChildIssue>) repository.findAll();
     }
 
     @Override

@@ -6,6 +6,8 @@ import com.example.demo.service.IssuePriorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class IssuePriorityServiceImpl implements IssuePriorityService {
 
@@ -27,8 +29,8 @@ public class IssuePriorityServiceImpl implements IssuePriorityService {
     }
 
     @Override
-    public Iterable<IssuePriority> getAllIssuePriorities() {
-        return repository.findAll();
+    public List<IssuePriority> getAllIssuePriorities() {
+        return (List<IssuePriority>) repository.findAll();
     }
 
     @Override
