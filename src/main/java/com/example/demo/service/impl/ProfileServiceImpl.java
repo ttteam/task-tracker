@@ -22,7 +22,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public Profile getProfileById(Long id) {
+    public Profile getProfileById(String id) {
         return repository.findProfileById(id);
     }
 
@@ -32,7 +32,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public void deleteProfile(Long id) {
+    public void deleteProfile(String id) {
         repository.deleteById(id);
     }
 }

@@ -22,7 +22,7 @@ public class ParameterServiceImpl implements ParameterService {
     }
 
     @Override
-    public Parameter getParameterById(Long id) {
+    public Parameter getParameterById(String id) {
         return repository.findParameterById(id);
     }
 
@@ -32,7 +32,7 @@ public class ParameterServiceImpl implements ParameterService {
     }
 
     @Override
-    public void deleteParameter(Long id) {
+    public void deleteParameter(String id) {
         repository.deleteById(id);
     }
 }

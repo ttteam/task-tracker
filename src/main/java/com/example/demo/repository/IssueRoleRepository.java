@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IssueRoleRepository extends CrudRepository<IssueRole, Long> {
-    IssueRole findIssueRoleById(Long id);
+public interface IssueRoleRepository extends CrudRepository<IssueRole, String> {
+    IssueRole findIssueRoleById(String id);
 }

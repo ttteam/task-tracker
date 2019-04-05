@@ -4,7 +4,7 @@ import com.example.demo.model.ParameterValue;
 
 public interface ParameterValueService {
     ParameterValue saveParameterValue(ParameterValue parameterValue);
-    ParameterValue getParameterValueById(Long id);
+    ParameterValue getParameterValueById(String id);
     Iterable<ParameterValue> getAllParameterValues();
-    void deleteParameterValue(Long id);
+    void deleteParameterValue(String id);
 }

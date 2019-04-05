@@ -13,7 +13,7 @@ import java.sql.Date;
 @Setter
 public class CommentDto {
     @Null
-    private Long id;
+    private String id;
 
     @NotNull
     private String commentText;

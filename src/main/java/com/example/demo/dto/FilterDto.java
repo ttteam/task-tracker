@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Dashboard;
 import com.example.demo.model.ParameterValue;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,14 +13,11 @@ import java.util.Set;
 @Setter
 public class FilterDto {
     @Null
-    private Long id;
+    private String id;
 
     @NotNull
     private String filterName;
 
     @NotNull
     private Set<ParameterValue> parametervalues = new HashSet<>();
-
-    @NotNull
-    private Set<Dashboard> dashboards = new HashSet<>();
 }

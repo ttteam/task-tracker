@@ -19,7 +19,7 @@ import java.util.Set;
 @Setter
 public class ProfileDto {
     @Null
-    private Long id;
+    private String id;
 
     @NotNull
     private String firstName;

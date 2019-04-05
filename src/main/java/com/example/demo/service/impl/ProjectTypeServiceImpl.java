@@ -22,7 +22,7 @@ public class ProjectTypeServiceImpl implements ProjectTypeService {
     }
 
     @Override
-    public ProjectType getProjectTypeById(Long id) {
+    public ProjectType getProjectTypeById(String id) {
         return repository.findProjectTypeById(id);
     }
 
@@ -32,7 +32,7 @@ public class ProjectTypeServiceImpl implements ProjectTypeService {
     }
 
     @Override
-    public void deleteProjectType(Long id) {
+    public void deleteProjectType(String id) {
         repository.deleteById(id);
     }
 }

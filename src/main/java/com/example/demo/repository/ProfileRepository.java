@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProfileRepository extends CrudRepository<Profile, Long> {
-    Profile findProfileById(Long id);
+public interface ProfileRepository extends CrudRepository<Profile, String> {
+    Profile findProfileById(String id);
 }

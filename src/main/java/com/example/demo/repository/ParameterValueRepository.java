@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ParameterValueRepository extends CrudRepository<ParameterValue, Long> {
-    ParameterValue findParameterValueById(Long id);
+public interface ParameterValueRepository extends CrudRepository<ParameterValue, String> {
+    ParameterValue findParameterValueById(String id);
 }

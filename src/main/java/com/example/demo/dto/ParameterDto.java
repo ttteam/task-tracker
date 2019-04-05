@@ -10,7 +10,7 @@ import javax.validation.constraints.Null;
 @Setter
 public class ParameterDto {
     @Null
-    private Long id;
+    private String id;
     @NotNull
     private String parameterName;
 }

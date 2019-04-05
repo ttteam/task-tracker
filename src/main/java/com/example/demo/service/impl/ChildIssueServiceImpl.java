@@ -22,7 +22,7 @@ public class ChildIssueServiceImpl implements ChildIssueService {
     }
 
     @Override
-    public ChildIssue getChildIssueById(Long id) {
+    public ChildIssue getChildIssueById(String id) {
         return repository.findChildIssueById(id);
     }
 
@@ -32,7 +32,7 @@ public class ChildIssueServiceImpl implements ChildIssueService {
     }
 
     @Override
-    public void deleteChildIssue(Long id) {
+    public void deleteChildIssue(String id) {
         repository.deleteById(id);
     }
 }

@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProjectTypeRepository extends CrudRepository<ProjectType, Long> {
-    ProjectType findProjectTypeById(Long id);
+public interface ProjectTypeRepository extends CrudRepository<ProjectType, String> {
+    ProjectType findProjectTypeById(String id);
 }

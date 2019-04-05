@@ -4,7 +4,7 @@ import com.example.demo.model.ProjectStatus;
 
 public interface ProjectStatusService {
     ProjectStatus saveProjectStatus(ProjectStatus projectStatus);
-    ProjectStatus getProjectStatusById(Long id);
+    ProjectStatus getProjectStatusById(String id);
     Iterable<ProjectStatus> getAllProjectStatuses();
-    void deleteProjectStatus(Long id);
+    void deleteProjectStatus(String id);
 }

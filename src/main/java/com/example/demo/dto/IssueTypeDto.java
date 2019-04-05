@@ -10,7 +10,7 @@ import javax.validation.constraints.Null;
 @Setter
 public class IssueTypeDto {
     @Null
-    private Long id;
+    private String id;
     @NotNull
     private String issueTypeName;
 }

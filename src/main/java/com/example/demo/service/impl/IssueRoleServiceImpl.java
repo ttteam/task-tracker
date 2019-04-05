@@ -9,30 +9,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class IssueRoleServiceImpl implements IssueRoleService {
 
-    private IssueRoleRepository issueRoleRepository;
+    private IssueRoleRepository repository;
 
     @Autowired
-    public IssueRoleServiceImpl(IssueRoleRepository issueRoleRepository) {
-        this.issueRoleRepository = issueRoleRepository;
+    public IssueRoleServiceImpl(IssueRoleRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public IssueRole saveIssueRole(IssueRole issueRole) {
-        return null;
+        return repository.save(issueRole);
     }
 
     @Override
-    public IssueRole getIssueRoleById(Long id) {
-        return null;
+    public IssueRole getIssueRoleById(String id) {
+        return repository.findIssueRoleById(id);
     }
 
     @Override
     public Iterable<IssueRole> getAllIssueRoles() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
-    public void deleteIssueRole(Long id) {
-
+    public void deleteIssueRole(String id) {
+        repository.deleteById(id);
     }
 }

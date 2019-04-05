@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 public class ProjectDto {
     @Null
-    private Long id;
+    private String id;
 
     @NotNull
     private String projectName;

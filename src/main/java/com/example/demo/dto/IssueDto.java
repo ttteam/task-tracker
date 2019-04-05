@@ -15,7 +15,7 @@ import java.util.Set;
 @Getter
 public class IssueDto {
     @Null
-    private Long id;
+    private String id;
 
     @NotNull
     private String issueName;

@@ -22,7 +22,7 @@ public class IssueTypeServiceImpl implements IssueTypeService {
     }
 
     @Override
-    public IssueType getIssueTypeById(Long id) {
+    public IssueType getIssueTypeById(String id) {
         return repository.findIssueTypeById(id);
     }
 
@@ -32,7 +32,7 @@ public class IssueTypeServiceImpl implements IssueTypeService {
     }
 
     @Override
-    public void deleteIssueType(Long id) {
+    public void deleteIssueType(String id) {
         repository.deleteById(id);
     }
 }

@@ -5,7 +5,7 @@ import javax.validation.constraints.Null;
 
 public class IssueStatusDto {
     @Null
-    private Long id;
+    private String id;
     @NotNull
     private String issueStatusName;
 }

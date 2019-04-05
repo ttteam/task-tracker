@@ -22,7 +22,7 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public Dashboard getDashboardById(Long id) {
+    public Dashboard getDashboardById(String id) {
         return repository.findDashboardById(id);
     }
 
@@ -32,7 +32,7 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public void deleteDashboard(Long id) {
+    public void deleteDashboard(String id) {
         repository.deleteById(id);
     }
 }

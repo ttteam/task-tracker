@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CommentRepository extends CrudRepository<Comment, Long> {
-    Comment findCommentById(Long id);
+public interface CommentRepository extends CrudRepository<Comment, String> {
+    Comment findCommentById(String id);
 }

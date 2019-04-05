@@ -22,7 +22,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment getCommentById(Long id) {
+    public Comment getCommentById(String id) {
         return repository.findCommentById(id);
     }
 
@@ -32,7 +32,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void deleteComment(Long id) {
+    public void deleteComment(String id) {
         repository.deleteById(id);
     }
 }

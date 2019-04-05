@@ -22,7 +22,7 @@ public class ProjectStatusServiceImpl implements ProjectStatusService {
     }
 
     @Override
-    public ProjectStatus getProjectStatusById(Long id) {
+    public ProjectStatus getProjectStatusById(String id) {
         return repository.findProjectStatusById(id);
     }
 
@@ -32,7 +32,7 @@ public class ProjectStatusServiceImpl implements ProjectStatusService {
     }
 
     @Override
-    public void deleteProjectStatus(Long id) {
+    public void deleteProjectStatus(String id) {
         repository.deleteById(id);
     }
 }

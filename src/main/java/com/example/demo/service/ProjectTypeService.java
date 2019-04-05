@@ -4,7 +4,7 @@ import com.example.demo.model.ProjectType;
 
 public interface ProjectTypeService {
     ProjectType saveProjectType(ProjectType projectType);
-    ProjectType getProjectTypeById(Long id);
+    ProjectType getProjectTypeById(String id);
     Iterable<ProjectType> getAllProjectTypes();
-    void deleteProjectType(Long id);
+    void deleteProjectType(String id);
 }

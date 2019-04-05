@@ -10,7 +10,7 @@ import javax.validation.constraints.Null;
 @Setter
 public class UserDto {
     @Null
-    private Long id;
+    private String id;
     @NonNull
     private String username;
     @NonNull

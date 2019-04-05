@@ -4,7 +4,7 @@ import com.example.demo.model.Project;
 
 public interface ProjectService {
     Project saveProject(Project project);
-    Project getProjectById(Long id);
+    Project getProjectById(String id);
     Iterable<Project> getAllProjects();
-    void deleteProject(Long id);
+    void deleteProject(String id);
 }

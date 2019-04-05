@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 public class IssuePriorityDto {
     @Null
-    private Long id;
+    private String id;
 
     @NotNull
     private String issuePriorityName;

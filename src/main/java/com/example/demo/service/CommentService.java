@@ -4,7 +4,7 @@ import com.example.demo.model.Comment;
 
 public interface CommentService {
     Comment saveComment(Comment comment);
-    Comment getCommentById(Long id);
+    Comment getCommentById(String id);
     Iterable<Comment> getAllComments();
-    void deleteComment(Long id);
+    void deleteComment(String id);
 }

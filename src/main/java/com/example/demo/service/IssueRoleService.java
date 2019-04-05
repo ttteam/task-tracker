@@ -4,7 +4,7 @@ import com.example.demo.model.IssueRole;
 
 public interface IssueRoleService {
     IssueRole saveIssueRole(IssueRole issueRole);
-    IssueRole getIssueRoleById(Long id);
+    IssueRole getIssueRoleById(String id);
     Iterable<IssueRole> getAllIssueRoles();
-    void deleteIssueRole(Long id);
+    void deleteIssueRole(String id);
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.Null;
 @Setter
 public class ProjectTypeDto {
     @Null
-    private Long id;
+    private String id;
 
     @NotNull
     private String projectTypeDto;

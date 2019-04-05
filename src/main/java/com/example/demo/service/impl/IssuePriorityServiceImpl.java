@@ -22,7 +22,7 @@ public class IssuePriorityServiceImpl implements IssuePriorityService {
     }
 
     @Override
-    public IssuePriority getIssuePriorityById(Long id) {
+    public IssuePriority getIssuePriorityById(String id) {
         return repository.findIssuePriorityById(id);
     }
 
@@ -32,7 +32,7 @@ public class IssuePriorityServiceImpl implements IssuePriorityService {
     }
 
     @Override
-    public void deleteIssuePriority(Long id) {
+    public void deleteIssuePriority(String id) {
         repository.deleteById(id);
     }
 }

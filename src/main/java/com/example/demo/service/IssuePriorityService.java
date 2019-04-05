@@ -4,7 +4,7 @@ import com.example.demo.model.IssuePriority;
 
 public interface IssuePriorityService {
     IssuePriority saveIssuePriority(IssuePriority issuePriority);
-    IssuePriority getIssuePriorityById(Long id);
+    IssuePriority getIssuePriorityById(String id);
     Iterable<IssuePriority> getAllIssuePriorities();
-    void deleteIssuePriority(Long id);
+    void deleteIssuePriority(String id);
 }

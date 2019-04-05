@@ -4,7 +4,7 @@ import com.example.demo.model.Issue;
 
 public interface IssueService {
     Issue saveIssue(Issue issue);
-    Issue getIssueById(Long id);
+    Issue getIssueById(String id);
     Iterable<Issue> getAllIssues();
-    void deleteIssue(Long id);
+    void deleteIssue(String id);
 }

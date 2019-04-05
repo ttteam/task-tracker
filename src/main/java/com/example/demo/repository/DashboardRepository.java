@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DashboardRepository extends CrudRepository<Dashboard, Long> {
-    Dashboard findDashboardById(Long id);
+public interface DashboardRepository extends CrudRepository<Dashboard, String> {
+    Dashboard findDashboardById(String id);
 }

@@ -22,7 +22,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public Project getProjectById(Long id) {
+    public Project getProjectById(String id) {
         return repository.findProjectById(id);
     }
 
@@ -32,7 +32,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void deleteProject(Long id) {
+    public void deleteProject(String id) {
         repository.deleteById(id);
     }
 }

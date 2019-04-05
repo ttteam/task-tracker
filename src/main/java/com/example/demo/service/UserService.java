@@ -4,7 +4,7 @@ import com.example.demo.model.User;
 
 public interface UserService {
     User saveUser(User user);
-    User getUserById(Long id);
+    User getUserById(String id);
     Iterable<User> getAllUsers();
-    void deleteUser(Long id);
+    void deleteUser(String id);
 }

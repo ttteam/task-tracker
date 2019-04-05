@@ -21,7 +21,7 @@ public class FilterServiceImpl implements FilterService {
     }
 
     @Override
-    public Filter getFilterById(Long id) {
+    public Filter getFilterById(String id) {
         return repository.findFilterById(id);
     }
 
@@ -31,7 +31,7 @@ public class FilterServiceImpl implements FilterService {
     }
 
     @Override
-    public void deleteFilter(Long id) {
+    public void deleteFilter(String id) {
         repository.deleteById(id);
     }
 }

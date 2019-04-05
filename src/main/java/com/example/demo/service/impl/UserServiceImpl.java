@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveUser(User user) {
-        User temp = repository.findByUsername(user.getUsername());
+        User temp = repository.findByUsername(user.getLogin());
         if (user.getId() != null || temp == null) {
             String newPass = bcryptEncoder.encode(user.getPassword());
             user.setPassword(newPass);
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User getUserById(String id) {
         return repository.findUserById(id);
     }
 
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void deleteUser(Long id) {
+    public void deleteUser(String id) {
         repository.deleteById(id);
     }
 }

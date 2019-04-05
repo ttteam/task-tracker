@@ -4,7 +4,7 @@ import com.example.demo.model.Profile;
 
 public interface ProfileService {
     Profile saveProfile(Profile profile);
-    Profile getProfileById(Long id);
+    Profile getProfileById(String id);
     Iterable<Profile> getAllProfiles();
-    void deleteProfile(Long id);
+    void deleteProfile(String id);
 }
