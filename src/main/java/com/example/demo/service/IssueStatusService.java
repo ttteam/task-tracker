@@ -7,6 +7,7 @@ import java.util.List;
 public interface IssueStatusService {
     IssueStatus saveIssueStatus(IssueStatus issueStatus);
     IssueStatus getIssueStatusById(String id);
+    IssueStatus updateIssueStatus(IssueStatus issueStatus);
     List<IssueStatus> getAllIssueStatuses();
     void deleteIssueStatus(String id);
 }

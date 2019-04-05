@@ -29,6 +29,11 @@ public class ProjectStatusServiceImpl implements ProjectStatusService {
     }
 
     @Override
+    public ProjectStatus updateProjectStatus(ProjectStatus projectStatus) {
+        return repository.save(projectStatus);
+    }
+
+    @Override
     public List<ProjectStatus> getAllProjectStatuses() {
         return (List<ProjectStatus>) repository.findAll();
     }

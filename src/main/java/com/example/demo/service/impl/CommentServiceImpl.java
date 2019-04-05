@@ -29,6 +29,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public Comment updateComment(Comment comment) {
+        return repository.save(comment);
+    }
+
+    @Override
     public List<Comment> getAllComments() {
         return (List<Comment>) repository.findAll();
     }

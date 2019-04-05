@@ -29,6 +29,11 @@ public class ParameterValueServiceImpl implements ParameterValueService {
     }
 
     @Override
+    public ParameterValue updateParameterValue(ParameterValue parameterValue) {
+        return repository.save(parameterValue);
+    }
+
+    @Override
     public List<ParameterValue> getAllParameterValues() {
         return (List<ParameterValue>)repository.findAll();
     }

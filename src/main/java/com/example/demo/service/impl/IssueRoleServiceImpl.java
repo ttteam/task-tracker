@@ -29,6 +29,11 @@ public class IssueRoleServiceImpl implements IssueRoleService {
     }
 
     @Override
+    public IssueRole updateIssueRole(IssueRole issueRole) {
+        return repository.save(issueRole);
+    }
+
+    @Override
     public List<IssueRole> getAllIssueRoles() {
         return (List<IssueRole>) repository.findAll();
     }

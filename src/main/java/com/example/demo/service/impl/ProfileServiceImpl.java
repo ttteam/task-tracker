@@ -29,6 +29,11 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
+    public Profile updateProfile(Profile profile) {
+        return repository.save(profile);
+    }
+
+    @Override
     public List<Profile> getAllProfiles() {
         return (List<Profile>) repository.findAll();
     }

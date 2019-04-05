@@ -29,6 +29,11 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
+    public Dashboard updateDashboard(Dashboard dashboard) {
+        return repository.save(dashboard);
+    }
+
+    @Override
     public List<Dashboard> getAllDashboards() {
         return (List<Dashboard>) repository.findAll();
     }

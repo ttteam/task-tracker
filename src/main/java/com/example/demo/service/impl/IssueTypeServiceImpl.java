@@ -29,6 +29,11 @@ public class IssueTypeServiceImpl implements IssueTypeService {
     }
 
     @Override
+    public IssueType updateIssueType(IssueType issueType) {
+        return repository.save(issueType);
+    }
+
+    @Override
     public List<IssueType> getAllIssueTypes() {
         return (List<IssueType>) repository.findAll();
     }

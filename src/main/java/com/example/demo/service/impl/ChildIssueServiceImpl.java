@@ -29,6 +29,11 @@ public class ChildIssueServiceImpl implements ChildIssueService {
     }
 
     @Override
+    public ChildIssue updateChildIssue(ChildIssue childIssue) {
+        return repository.save(childIssue);
+    }
+
+    @Override
     public List<ChildIssue> getAllChildIssues() {
         return (List<ChildIssue>) repository.findAll();
     }

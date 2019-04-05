@@ -29,6 +29,11 @@ public class IssuePriorityServiceImpl implements IssuePriorityService {
     }
 
     @Override
+    public IssuePriority updateIssuePriority(IssuePriority issuePriority) {
+        return repository.save(issuePriority);
+    }
+
+    @Override
     public List<IssuePriority> getAllIssuePriorities() {
         return (List<IssuePriority>) repository.findAll();
     }

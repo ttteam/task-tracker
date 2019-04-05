@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface RoleService {
     Role saveRole(Role role);
     Role getRoleById(String id);
-//    Iterable<Role> getAllRoles();
+    Role updateRole(Role role);
     List<Role> getAllRoles();
     void deleteRole(String id);
 }

@@ -29,6 +29,11 @@ public class ProjectTypeServiceImpl implements ProjectTypeService {
     }
 
     @Override
+    public ProjectType updateProjectType(ProjectType projectType) {
+        return repository.save(projectType);
+    }
+
+    @Override
     public List<ProjectType> getAllProjectTypes() {
         return (List<ProjectType>) repository.findAll();
     }

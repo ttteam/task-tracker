@@ -29,6 +29,11 @@ public class IssueServiceImpl implements IssueService {
     }
 
     @Override
+    public Issue updateIssue(Issue issue) {
+        return repository.save(issue);
+    }
+
+    @Override
     public List<Issue> getAllIssues() {
         return (List<Issue>) repository.findAll();
     }

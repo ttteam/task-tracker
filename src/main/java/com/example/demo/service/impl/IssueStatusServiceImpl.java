@@ -29,6 +29,11 @@ public class IssueStatusServiceImpl implements IssueStatusService {
     }
 
     @Override
+    public IssueStatus updateIssueStatus(IssueStatus issueStatus) {
+        return repository.save(issueStatus);
+    }
+
+    @Override
     public List<IssueStatus> getAllIssueStatuses() {
         return (List<IssueStatus>) repository.findAll();
     }

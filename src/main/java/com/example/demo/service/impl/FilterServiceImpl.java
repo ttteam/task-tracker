@@ -28,6 +28,11 @@ public class FilterServiceImpl implements FilterService {
     }
 
     @Override
+    public Filter updateFilter(Filter filter) {
+        return repository.save(filter);
+    }
+
+    @Override
     public List<Filter> getAllFilters() {
         return (List<Filter>) repository.findAll();
     }
