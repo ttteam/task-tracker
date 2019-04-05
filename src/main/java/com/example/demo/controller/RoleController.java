@@ -45,10 +45,15 @@ public class RoleController {
         return roleService.saveRole(account);
     }
 
+    @PutMapping
+    public RoleDto updateRole(@RequestBody RoleDto accountForUpdate) {
+        Role role = modelMapper.map(roleService.getRoleById(accountForUpdate.getId()), Role.class);
+        return modelMapper.map(roleService.updateRole(role), RoleDto.class);
+    }
+
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity deleteRole(@PathVariable(name = "id") String id) {
         roleService.deleteRole(id);
         return ResponseEntity.noContent().build();
     }
-
 }
