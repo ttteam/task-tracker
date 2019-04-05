@@ -1,11 +1,14 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.config.JwtTokenUtil;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,15 +26,18 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     private UserRepository repository;
 
-    @Autowired
-    private BCryptPasswordEncoder bcryptEncoder;
+    private final BCryptPasswordEncoder bcryptEncoder;
+
+    private final JwtTokenUtil jwtTokenUtil;
+
+    private RoleService roleService;
 
     @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    public UserServiceImpl(UserRepository repository) {
+    public UserServiceImpl(UserRepository repository, BCryptPasswordEncoder bcryptEncoder, JwtTokenUtil jwtTokenUtil) {
         this.repository = repository;
+        this.bcryptEncoder = bcryptEncoder;
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.roleService = roleService;
     }
 
     @Override
@@ -40,6 +46,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         if (user.getId() != null || temp == null) {
             String newPass = bcryptEncoder.encode(user.getPassword());
             user.setPassword(newPass);
+
+            Set role = new HashSet<Role>(1);
+            role.add(roleService.getRoleById(1L));
+            user.setRoles(role);
 
             return repository.save(user);
         } else return null;
@@ -75,8 +85,14 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     public Set getAuthority(User user) {
-        Set authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(user.getRoles().stream().findFirst().get().getName()));
+        Set<GrantedAuthority> authorities = new HashSet<>();
+
+        for (Role role: user.getRoles()
+             ) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+
+
         return authorities;
     }
 

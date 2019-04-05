@@ -31,6 +31,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException,
             IOException {
+        if (request.getRequestURI().contains("/token/") || request.getRequestURI().endsWith("/login")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String header = request.getHeader(Constants.HEADER_STRING);
         String login = null;
         String authToken = null;

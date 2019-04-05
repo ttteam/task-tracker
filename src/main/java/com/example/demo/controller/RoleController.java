@@ -19,17 +19,6 @@ public class RoleController {
         this.roleService = roleService;
     }
 
-    @GetMapping(value = "")
-    public ResponseEntity<Role> getRoleById(@PathVariable(name = "id") Long id) {
-
-        Optional<Role> role = roleService.getRoleById(id);
-
-        if (role.isPresent()) {
-            return ResponseEntity.ok(role.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 
     @GetMapping(value = "/all")
     public Iterable<Role> getAllRoles() {
