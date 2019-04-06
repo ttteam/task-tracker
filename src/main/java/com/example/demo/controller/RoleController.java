@@ -10,30 +10,29 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/roles")
 public class RoleController {
-    private RoleService roleService;
+    private RoleService service;
 
     @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
-    public RoleController(RoleService roleService) {
-        this.roleService = roleService;
+    public RoleController(RoleService service) {
+        this.service = service;
     }
 
     @GetMapping(value = "/{id}")
     public RoleDto getRoleById(@PathVariable(name = "id") String id) {
-        return modelMapper.map(roleService.getRoleById(id), RoleDto.class);
+        return modelMapper.map(service.getRoleById(id), RoleDto.class);
     }
 
     @GetMapping(value = "/all")
     public List<RoleDto> getAllRoles() {
         List<RoleDto> rolesDto = new ArrayList<>();
-        List<Role> roles = roleService.getAllRoles();
+        List<Role> roles = service.getAllRoles();
         for(Role item : roles) {
             rolesDto.add(modelMapper.map(item, RoleDto.class));
         }
@@ -42,18 +41,18 @@ public class RoleController {
 
     @PostMapping
     public Role saveRole(@RequestBody Role account) {
-        return roleService.saveRole(account);
+        return service.saveRole(account);
     }
 
     @PutMapping
-    public RoleDto updateRole(@RequestBody RoleDto accountForUpdate) {
-        Role role = modelMapper.map(roleService.getRoleById(accountForUpdate.getId()), Role.class);
-        return modelMapper.map(roleService.updateRole(role), RoleDto.class);
+    public RoleDto updateRole(@RequestBody RoleDto roleForUpdate) {
+        Role role = modelMapper.map(service.getRoleById(roleForUpdate.getId()), Role.class);
+        return modelMapper.map(service.updateRole(role), RoleDto.class);
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity deleteRole(@PathVariable(name = "id") String id) {
-        roleService.deleteRole(id);
+        service.deleteRole(id);
         return ResponseEntity.noContent().build();
     }
 }
