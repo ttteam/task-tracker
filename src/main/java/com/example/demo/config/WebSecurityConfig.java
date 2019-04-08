@@ -22,7 +22,7 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Resource(name = "userService")
+    @Resource(name = "userDetailsService")
     private UserDetailsService userService;
 
     @Autowired

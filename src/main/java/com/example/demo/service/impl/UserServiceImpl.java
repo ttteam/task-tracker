@@ -1,54 +1,41 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.config.JwtTokenUtil;
-import com.example.demo.entity.Role;
-import com.example.demo.entity.User;
+import com.example.demo.model.Role;
+import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.RoleService;
-import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.example.demo.service.UserService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.HashSet;
-import java.util.Optional;
+import java.util.List;
 import java.util.Set;
 
-@Service(value = "userService")
-public class UserServiceImpl implements UserDetailsService, UserService {
-
+@Service
+public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
-    private final BCryptPasswordEncoder bcryptEncoder;
+    @Autowired
+    private BCryptPasswordEncoder bcryptEncoder;
 
-    private final JwtTokenUtil jwtTokenUtil;
-
+    @Autowired
     private RoleService roleService;
 
     @Autowired
-    public UserServiceImpl(UserRepository repository, BCryptPasswordEncoder bcryptEncoder, JwtTokenUtil jwtTokenUtil) {
+    public UserServiceImpl(UserRepository repository) {
         this.repository = repository;
-        this.bcryptEncoder = bcryptEncoder;
-        this.jwtTokenUtil = jwtTokenUtil;
-        this.roleService = roleService;
     }
 
     @Override
     public User saveUser(User user) {
-        User temp = repository.findByUsername(user.getUsername());
+        User temp = repository.findByLogin(user.getLogin());
         if (user.getId() != null || temp == null) {
-            String newPass = bcryptEncoder.encode(user.getPassword());
-            user.setPassword(newPass);
+            user.setPassword(bcryptEncoder.encode(user.getPassword()));
 
             Set role = new HashSet<Role>(1);
-            role.add(roleService.getRoleById(1L));
+            role.add(roleService.getRoleById("bb65ce3f-d8b9-4b08-8737-3cf55caf4bdd"));
             user.setRoles(role);
 
             return repository.save(user);
@@ -56,44 +43,27 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User updateUser(User user) {
+        return repository.save(user);
+    }
+
+    @Override
+    public User getUserById(String id) {
         return repository.findUserById(id);
     }
 
     @Override
-    public Iterable<User> getAllUsers() {
-        return repository.findAll();
-    }
-
-
-    @Override
-    public void deleteUser(Long id) {
-        repository.deleteById(id);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = getUserByUsername(username);
-        if (user == null)
-            throw new UsernameNotFoundException("Invalid username or password.");
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority(user));
+    public List<User> getAllUsers() {
+        return (List<User>)repository.findAll();
     }
 
     @Override
     public User getUserByUsername(String username) {
-        return repository.findByUsername(username);
+        return repository.findByLogin(username);
     }
 
-    public Set getAuthority(User user) {
-        Set<GrantedAuthority> authorities = new HashSet<>();
-
-        for (Role role: user.getRoles()
-             ) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-
-
-        return authorities;
+    @Override
+    public void deleteUser(String id) {
+        repository.deleteById(id);
     }
-
 }

@@ -1,11 +1,12 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Role;
+import com.example.demo.model.Role;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,17 +25,22 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role getRoleById(Long id) {
-        return repository.getOne(id);
+    public Role getRoleById(String id) {
+        return repository.findRoleById(id);
     }
 
     @Override
-    public Iterable<Role> getAllRoles() {
-        return repository.findAll();
+    public Role updateRole(Role role) {
+        return repository.save(role);
     }
 
     @Override
-    public void deleteRole(Long id) {
+    public List<Role> getAllRoles() {
+        return (List<Role>)repository.findAll();
+    }
+
+    @Override
+    public void deleteRole(String id) {
         repository.deleteById(id);
     }
 }
