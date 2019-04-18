@@ -25,11 +25,13 @@ public class IssueDto {
     private String issueName;
 
     @NotNull
-    private String issueDescription;
+    private IssueType issuetype;
 
     @NotNull
-    @DateTimeFormat
-    private Date startDate;
+    private IssuePriority issuepriority;
+
+    @NotNull
+    private String issueDescription;
 
     @NotNull
     @DateTimeFormat
@@ -39,21 +41,7 @@ public class IssueDto {
     private Project project;
 
     @NotNull
-    private IssueType issuetype;
-
-    @NotNull
-    private IssuePriority issuepriority;
-
-    @NotNull
-    private IssueStatus issuestatus;
-
-    @NotNull
-    private Set<ChildIssue> childissue = new HashSet<>();
-
-    @NotNull
-    private Set<Issue> issues = new HashSet<>();
-
-    @NotNull
     private Set<Issue> issueRoles = new HashSet<>();
+
 
 }

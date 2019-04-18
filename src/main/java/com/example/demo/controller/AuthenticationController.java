@@ -6,6 +6,7 @@ import com.example.demo.config.Constants;
 import com.example.demo.config.JwtTokenUtil;
 import com.example.demo.model.AuthToken;
 import com.example.demo.model.LoginUser;
+import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +20,7 @@ import javax.naming.AuthenticationException;
 import java.util.Date;
 
 @RestController
-@RequestMapping("/token")
+@RequestMapping("/api/token")
 public class AuthenticationController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class AuthenticationController {
     private JwtTokenUtil jwtTokenUtil;
 
     @PostMapping(value = "/generate-token")
-    public AuthToken register(@RequestBody LoginUser loginUser) throws AuthenticationException {
+    public UserDetails register(@RequestBody LoginUser loginUser) throws AuthenticationException {
         UserDetails userDetails = userService.loadUserByUsername(loginUser.getLogin());
 
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
@@ -45,7 +46,9 @@ public class AuthenticationController {
         if (authenticationToken.isAuthenticated())
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         final String token = jwtTokenUtil.generateToken(authenticationToken);
-        return new AuthToken(token);
+
+
+        return userDetails;
     }
 
     @GetMapping(value = "/expDate")
