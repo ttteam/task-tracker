@@ -18,30 +18,24 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IssueDto {
-    @Null
     private String id;
 
     @NotNull
     private String issueName;
 
     @NotNull
-    private IssueType issuetype;
+    private IssueType issueType;
 
-    @NotNull
-    private IssuePriority issuepriority;
+    private IssuePriority issuePriority;
 
     @NotNull
     private String issueDescription;
 
-    @NotNull
     @DateTimeFormat
     private Date dueDate;
 
-    @NotNull
     private Project project;
 
-    @NotNull
     private Set<Issue> issueRoles = new HashSet<>();
-
 
 }

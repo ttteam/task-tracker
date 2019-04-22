@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +42,11 @@ public class IssueController {
     }
 
     @PostMapping
-    public Issue saveIssue(@RequestBody Issue issue) {
-        return service.saveIssue(issue);
+    public IssueDto saveIssue(@Valid @RequestBody IssueDto issue) {
+        return modelMapper.map(service.saveIssue(modelMapper.map(issue, Issue.class)), IssueDto.class);
     }
+
+    /*Valid добавляет валидацию и те поля, которые в ДТО должны быть незаполнены, они не должны быть помечены аннотацией NotNull */
 
     @PutMapping
     public IssueDto updateIssue(@RequestBody IssueDto issueForUpdate) {

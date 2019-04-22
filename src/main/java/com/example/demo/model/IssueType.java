@@ -20,9 +20,9 @@ public class IssueType {
             strategy = "org.hibernate.id.UUIDGenerator"
     )
     private String id;
-    private String issueTypeName;
+    private String issueType;
 
     public IssueType(String issueTypeName) {
-        this.issueTypeName = issueTypeName;
+        this.issueType = issueType;
     }
 }

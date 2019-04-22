@@ -40,14 +40,14 @@ public class Issue {
             CascadeType.MERGE
     })
     @JoinColumn(name = "issueTypeId", referencedColumnName = "id")
-    private IssueType issuetype;
+    private IssueType issueType;
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinColumn(name ="issuePriorityId", referencedColumnName = "id")
-    private IssuePriority issuepriority;
+    private IssuePriority issuePriority;
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST,
@@ -89,8 +89,8 @@ public class Issue {
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.project = project;
-        this.issuetype = issuetype;
-        this.issuepriority = issuepriority;
+        this.issueType = issuetype;
+        this.issuePriority = issuepriority;
         this.issuestatus = issuestatus;
     }
 }
